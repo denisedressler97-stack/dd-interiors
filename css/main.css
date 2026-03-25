@@ -1,0 +1,23 @@
+/* base */
+@import "./base/reset.css";
+@import "./base/base.css";
+@import "./base/variables.css";
+@import "./base/typography.css";
+
+/* layout */
+@import "./layout/container.css";
+@import "./layout/header.css";
+@import "./layout/footer.css";
+
+/* components */
+@import "./components/navbar.css";
+@import "./components/button.css";
+@import "./components/badge.css";
+
+/* utilities */
+@import "./utilities/flex.css";
+@import "./utilities/spacing.css";
+
+/* pages */
+@import "./pages/home.css";
+@import "./pages/legal.css";

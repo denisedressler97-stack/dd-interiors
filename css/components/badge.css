@@ -1,0 +1,25 @@
+.badge.badge--sticky {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    z-index: var(--z-modal);
+}
+
+.badge__img {
+    max-width: 70px;
+}
+
+@media (max-width: 768px) {
+    .badge.badge--sticky {
+        bottom: var(--space-4);
+        right: var(--space-4);
+    }
+
+    .badge--sticky .badge__img {
+        max-width: 48px;
+    }
+}
+
+.badge--footer .badge__img {
+    max-width: 28px;
+}
