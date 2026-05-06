@@ -26,6 +26,10 @@
     gap: var(--space-6);
 }
 
+.hero__right .projekte__mehr-btn {
+    margin-top: var(--space-4);
+}
+
 .hero__title {
     font-family: 'GFS Didot', serif;
     font-size: clamp(50px, 7vw, 100px);
@@ -62,9 +66,9 @@
 
 .hero__subtext {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
     color: var(--color-dark-text-secondary);
-    line-height: 1.2;
+    line-height: 1.5;
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
@@ -75,6 +79,7 @@
     font-size: var(--text-xl);
     color: var(--color-accent);
     text-decoration: none;
+    margin-top: var(--space-7);
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -405,7 +410,7 @@
 
 .ueber-mich__text {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
     color: var(--color-dark-text-secondary);
     line-height: 1.5;
     max-width: 700px;
@@ -443,10 +448,12 @@
     min-height: calc(100vh - var(--header-height));
     scroll-margin-top: var(--header-height);
     padding-top: var(--space-9);
-    padding-bottom: var(--space-section);
+    padding-bottom: 0;
 }
 
 .faq__left {
+    position: relative;
+    overflow: hidden;
     background-color: var(--color-dark-bg);
     padding: var(--space-9) var(--container-padding);
     display: flex;
@@ -455,11 +462,34 @@
     align-items: center;
 }
 
+.faq__left-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    object-position: center 100%;
+    z-index: 0;
+}
+
+.faq__left-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(44, 31, 26, 0.3) 0%, rgba(44, 31, 26, 0.7) 50%, rgba(44, 31, 26, 1) 100%);
+    z-index: 1;
+}
+
 .faq__label {
     font-family: 'Montserrat', sans-serif;
     font-size: var(--text-sm);
     color: var(--color-dark-text);
     letter-spacing: 0.06em;
+    position: relative;
+    z-index: 2;
 }
 
 .faq__heading {
@@ -469,6 +499,8 @@
     line-height: 1;
     color: var(--color-dark-text);
     margin-top: var(--space-7);
+    position: relative;
+    z-index: 2;
 }
 
 .faq__right {
@@ -477,48 +509,84 @@
 }
 
 .faq__right-content {
-    padding: var(--space-9) var(--container-padding);
+    padding: var(--space-8) var(--space-10);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: var(--space-8);
-}
-
-.faq__right-dark {
-    flex: 1;
-    background-color: var(--color-dark-bg);
+    gap: var(--space-7);
 }
 
 .faq__item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-4);
     text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: var(--space-5);
 }
 
 .faq__question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    background: none;
+    border: none;
+    cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     font-size: var(--text-md);
     font-weight: var(--font-bold);
-    color: var(--color-heading);
+    color: var(--color-dark-text);
     letter-spacing: 0.08em;
     line-height: 1.5;
+    text-align: left;
+    padding: 0;
+}
+
+.faq__icon {
+    font-size: var(--text-xl);
+    font-weight: 300;
+    color: var(--color-accent);
+    transition: transform 0.4s ease;
+    flex-shrink: 0;
+}
+
+.faq__item--open .faq__icon {
+    transform: rotate(45deg);
+}
+
+.faq__answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+    width: 100%;
+}
+
+.faq__item--open .faq__answer-wrap {
+    grid-template-rows: 1fr;
+}
+
+.faq__answer-inner {
+    overflow: hidden;
 }
 
 .faq__divider {
     width: 40px;
     height: 1px;
     background-color: var(--color-accent);
+    margin: var(--space-4) auto var(--space-3);
 }
 
 .faq__answer {
     font-family: 'Montserrat', sans-serif;
     font-size: var(--text-base);
     font-weight: var(--font-regular);
-    color: var(--color-text-primary);
+    color: var(--color-dark-text);
     line-height: 1.5;
     max-width: 480px;
+    margin: 0 auto;
+    padding-bottom: var(--space-3);
 }
 
 
@@ -527,8 +595,8 @@
     display: grid;
     grid-template-columns: 646px 1fr;
     scroll-margin-top: var(--header-height);
-    padding-top: var(--space-9);
-    padding-bottom: var(--space-section);
+    padding-top: 0;
+    padding-bottom: var(--space-5);
 }
 
 .kontakt__left {
@@ -618,6 +686,39 @@
     background-color: var(--color-accent-hover);
 }
 
+.kontakt__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.kontakt__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-decoration: none;
+    align-items: center;
+}
+
+.kontakt__info-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+}
+
+.kontakt__info-value {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--text-base);
+    color: var(--color-dark-text);
+    transition: color var(--transition-base);
+}
+
+.kontakt__info-item:hover .kontakt__info-value {
+    color: var(--color-accent);
+}
+
 .kontakt__right {
     overflow: hidden;
 }
@@ -654,7 +755,7 @@
 
 .leistungen__subtitle {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
     color: var(--color-dark-text-secondary);
     text-align: center;
     margin-bottom: var(--space-3);
@@ -876,10 +977,6 @@
 
     .faq__right-content {
         padding: var(--space-7) var(--container-padding);
-    }
-
-    .faq__right-dark {
-        display: none;
     }
 
 
